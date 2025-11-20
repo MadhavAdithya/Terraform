@@ -43,10 +43,10 @@ resource "aws_instance" "demo-modules-1"{
   }
   provisioner "remote-exec"{
     inline=[
+      "sudo apt update",
       "sudo apt install -y docker.io",
-      "sudo su",
-      "docker run -itd --name nginx-container nginx",
-      "crontab /home/ubuntu/docker_cron.txt"
+      "sudo docker run -itd --name nginx-container nginx",
+      "sudo crontab /home/ubuntu/docker_cron.txt"
     ]
   }
 }
