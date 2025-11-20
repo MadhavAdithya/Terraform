@@ -30,7 +30,8 @@ resource "aws_instance" "demo-modules-1"{
   provisioner "remote-exec"{
     inline=[
       "export PATH=\"$PATH:/opt/aws/amazon-cloudwatch-agent/bin/\"",
-      "cd /opt/aws/amazon-cloudwatch-agent/bin/","sudo amazon-cloudwatch-agent-ctl -a fetch-config -m auto -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json -s"
+      "cd /opt/aws/amazon-cloudwatch-agent/bin/","sudo amazon-cloudwatch-agent-ctl -a fetch-config -m auto -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json -s",
+      "sudo snap install aws-cli --classic"
     ]
   }
   provisioner "file"{
